@@ -22,9 +22,12 @@ public class Issue1_1 {
         char[] stringChars = string.toCharArray();
         boolean result = false;
 
-        for (int i = 0; i < stringChars.length; i++) {
-            for (int j = i + 1; j < stringChars.length; j++) {
-                if (stringChars[i] == stringChars[j]) result = true;
+        if (string.length() > 256) result = false;
+        else {
+            for (int i = 0; i < stringChars.length; i++) {
+                for (int j = i + 1; j < stringChars.length; j++) {
+                    if (stringChars[i] == stringChars[j]) result = true;
+                }
             }
         }
 
@@ -44,9 +47,12 @@ public class Issue1_1 {
         boolean[] verificator = new boolean[256];
         char[] stringChars = string.toCharArray();
 
-        for (char c : stringChars) {
-            if (verificator[c]) result = true;
-            else verificator[c] = true;
+        if (string.length() > 256) result = false;
+        else {
+            for (char c : stringChars) {
+                if (verificator[c]) result = true;
+                else verificator[c] = true;
+            }
         }
 
         System.out.println(result);
