@@ -1,31 +1,36 @@
 /**
- * Напишите код, заменяющий все пробелы в строке символами '%20'.
- * Можно предположить, что длина строки позволяет сохранить дополнительные символы и "истинная" длина строки тоже известна.
+ * Напишите функцию, которая проверяет является заданная строка перестановкой палиндрома.
  */
 public class Issue1_4 {
     public static void main(String[] args) {
-        replace("Hello World !!!");
+        solution("taco cat", "atco cta");
     }
 
-    private static void replace(String str) {
-        System.out.print("replace: " + str + " - ");
-        char[] strChars = str.toCharArray();
-        int spaceCounter = 0;
-        int newStrCharsIndex = 0;
-        for (char c : strChars) if (c == ' ') spaceCounter++;
-        int newStrCharsLength = strChars.length + (spaceCounter * 3);
-        char[] newStrChars = new char[newStrCharsLength];
+    private static void solution(String str1, String str2) {
+        int resultSum = 0;
+        boolean result = false;
 
-        for (int i = 0; i < strChars.length; i++) {
-            if (strChars[i] == ' ') {
-                newStrChars[newStrCharsIndex++] = '%';
-                newStrChars[newStrCharsIndex++] = '2';
-                newStrChars[newStrCharsIndex++] = '0';
-            } else {
-                newStrChars[newStrCharsIndex++] = strChars[i];
+        if (str1.length() == str2.length()) {
+            char[] str1Chars = str1.toCharArray();
+            int str1Sum = 0;
+            char[] str2Chars = str2.toCharArray();
+            int str2Sum = 0;
+
+            for (char c : str1Chars) str1Sum += c;
+            for (char c : str2Chars) str2Sum += c;
+
+            if (str1Sum == str2Sum) {
+                int strLength = str1.length();
+                for (int i = 0; i < strLength / 2; i++) {
+                    int j = strLength - i - 1;
+                    boolean isPolyndom = str2Chars[i] == str2Chars[j];
+                    if (isPolyndom) resultSum++;
+                }
             }
         }
 
-        System.out.println(new String(newStrChars));
+        if ((str2.length()/2 - 1) - resultSum == 0) result = true;
+
+        System.out.println(str1 + " - " + str2 + " : " + result);
     }
 }
