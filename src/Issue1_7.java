@@ -11,7 +11,7 @@ public class Issue1_7 {
     }
 
     private static void solution() {
-        int SIZE = 3;
+        int SIZE = 4 ;
 
         int[][] matrix = new int[SIZE][SIZE];
         Random random = new Random();
