@@ -13,7 +13,8 @@ public class Issue1_0 {
      * Кастомная реализация HashTable.
      */
     static class MyHashTable<K, V> {
-        LinkedList<Entry>[] entries = new LinkedList[]{};
+        int SIZE = 10;
+        LinkedList<Entry>[] entries = new LinkedList[SIZE];
 
         public void put(K key, V value) {
             Entry<K, V> entry = new Entry();
@@ -38,10 +39,12 @@ public class Issue1_0 {
                     }
                 }
             }
+
+            return null;
         }
 
         public int getIndex(K key) {
-            int index;
+            int index = key.hashCode() / SIZE;
 
             return index;
         }
